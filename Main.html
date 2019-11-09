@@ -1,0 +1,112 @@
+ <html>
+<body>
+<marquee><b>Program for simple database connectivity and query execution<b></marquee>
+    <form  method="POST" action="Operation1.php" onsubmit="FindTotal()">
+        <center>
+            <h1>OSS Mess</h1>
+            <h2>Items</h2>
+            <table>
+            <tr>
+            <td>
+            Name:
+            </td>
+            <td>
+            <input type="text" name="Nm"/>
+            </td>
+            </tr>
+            <tr>
+            <td>Idly: </td><td><input type="text" name="IdlyQty" id="idly" size="1" maxlength="2"></td>
+            </tr>
+            <tr>
+            <td>Dhosai: </td><td><input type="text" name="DhQty" id="Dh" size="1" maxlength="2"></td>
+            </tr>
+            <tr>
+            <td>Poori </td><td><input type="text" name="PrQty" id="Pr" size="1" maxlength="2"></td>
+            </tr>
+            <tr>
+            <td>Vadai: </td><td><input type="text" name="VdQty" id="Vd" size="1" maxlength="2"></td>
+                <tr>
+                    <td>
+                    <input type="number" id="tot" name="tot">The Total value is </h1> 
+                </td>
+                </tr>
+                <tr>
+                    <td>Amount Paid: </td><td><input type="number" id="Amt_pd" name="Amt_pd"></td>
+                    </tr>
+            </table>
+            <button type="submit">Submit</button>   
+        </form>
+    
+    <script>
+        function FindTotal()
+        {
+           // alert(parseInt(document.getElementById("idly").value));
+            var id=parseInt(document.getElementById("idly").value);
+            var dh=parseInt(document.getElementById("Dh").value);
+            var pr=parseInt(document.getElementById("Pr").value);
+            var vd=parseInt(document.getElementById("Vd").value);
+            var total=0;
+           //alert("id "+id+" dh "+dh+" pr "+pr+" vd "+vd);
+            var id_rt=5; 
+            var vd_rt=3;
+            var pr_rt=15;
+            var dh_rt=10;
+            var amt_pd=0;
+            if(id!=0)
+            {
+                total= total+idlyCnt(id);
+                //alert(total);
+            }
+            if((pr!=0))
+            {
+                total=total+PrCnt(pr);
+                //alert(total);
+            }   
+            if((vd!=0))
+            {
+                total=total+VdCnt(vd);
+                //alert(total);
+            }
+            if(dh!=0)
+            {
+                total=total+DhCnt(dh);
+                //alert(total);
+            }   
+            function idlyCnt(qty)
+            {
+                //alert("The idly qty"+qty);
+                var t= (qty*id_rt);
+                //alert("The idly total"+t);
+                return t;
+            }
+            function PrCnt(qty)
+            {
+                var G=(qty*pr_rt);
+                //alert("The poori total"+G);
+                return G;
+            }
+            function DhCnt(qty)
+            {
+               var to=(qty*dh_rt);
+               //alert("The dhosai total"+to);
+                return to;
+            }
+            function VdCnt(qty)
+            {
+                tot=(qty*vd_rt);
+               //alert("The vadai total"+tot);
+                return tot;
+            }
+            if(total!=0)
+            { 
+                alert(total+" the total amount");
+                document.getElementById("tot").value=total;  
+                alert(document.getElementById("tot").value);
+                var amt_pd= prompt("Enter the amount paid","0");
+                document.getElementById("Amt_pd").value=amt_pd;
+            }    
+        }          
+    </script>
+    </body>
+    </center>
+</html>
